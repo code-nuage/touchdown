@@ -60,7 +60,7 @@ function View:update()
         total_lines = total_lines + 1
     end
 
-    local scrollable_lines = math.max(total_lines - self.h, 1) -- évite une division par zéro
+    local scrollable_lines = math.max(total_lines - self.h, 1)
     self.progress = math.floor(math.min((self.scroll_y / scrollable_lines) * 100, 100))
 end
 
