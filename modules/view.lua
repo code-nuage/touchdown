@@ -21,29 +21,29 @@ function View:update()
 
         if self.scroll_y + self.h + 1 <= i then
             self.scroll_y = self.scroll_y + 1
-            lui.graphics.clear()
+            self:clear()
         end
     end
     if lui.keyboard.is_down(lui.keys["ARROW_UP"]) or lui.keyboard.is_down("j") then
         if self.scroll_y - 1 >= 0 then
             self.scroll_y = self.scroll_y - 1
-            lui.graphics.clear()
+            self:clear()
         end
     end
     -- if lui.keyboard.is_down(lui.keys["ARROW_RIGHT"]) or lui.keyboard.is_down("l") then
     --     self.scroll_x = self.scroll_x + 1
-    --     lui.graphics.clear()
+    --     self:clear()
     -- end
     -- if lui.keyboard.is_down(lui.keys["ARROW_LEFT"]) or lui.keyboard.is_down("h") then
     --     if self.scroll_x - 1 >= 0 then
     --         self.scroll_x = self.scroll_x - 1
     --     end
-    --     lui.graphics.clear()
+    --     self:clear()
     -- end
     if lui.keyboard.is_down(lui.keys["PAGE_DOWN"]) or lui.keyboard.is_down(lui.keys["CTRL_K"]) then
         local scroll_delta = self.h - 1
         self.scroll_y = self.scroll_y + scroll_delta
-        lui.graphics.clear()
+        self:clear()
     end
     if lui.keyboard.is_down(lui.keys["PAGE_UP"]) or lui.keyboard.is_down(lui.keys["CTRL_J"]) then
         local scroll_delta = self.h - 1
@@ -52,7 +52,7 @@ function View:update()
         elseif self.scroll_y - scroll_delta < 0 then
             self.scroll_y = 0
         end
-        lui.graphics.clear()
+        self:clear()
     end
 
     local total_lines = 0
@@ -62,6 +62,13 @@ function View:update()
 
     local scrollable_lines = math.max(total_lines - self.h, 1) -- évite une division par zéro
     self.progress = math.floor(math.min((self.scroll_y / scrollable_lines) * 100, 100))
+end
+
+function View:clear()
+    for y = self.y, self.y + self.h do
+        local replacement_string = string.rep(" ", self.w)
+        lui.graphics.draw(replacement_string, self.x, y)
+    end
 end
 
 function View:draw()

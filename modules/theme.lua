@@ -8,5 +8,6 @@ return {
     ["block_code"] = {background = "#888888"},
     ["quote"] = {foreground = "#2067F5"},
     ["bullet"] = {foreground = "#2067F5"}, ["list"] = {foreground = "#2067F5"}, ["todo"] = {foreground = "#FF0000", bold = true}, ["done"] = {foreground = "#00FF00", bold = true},
-    ["bottom_bar"] = {foreground = "#888888"}
+    ["title"] = {foreground = "#FFFFFF", background = "#2067F5", bold = true},
+    ["bottom_bar"] = {background = "#888888"}
 }
