@@ -19,7 +19,6 @@ dependencies = {
 build = {
     type = "builtin",
 
-    -- ici, tu dois **déclarer explicitement** tes modules Lua si tu veux qu'ils soient installés
     modules = {
         ["modules.parser"] = "./modules/parser.lua",
         ["modules.theme"] = "./modules/theme.lua",
@@ -28,7 +27,6 @@ build = {
         ["libs.lui-themes.init"] = "./libs/lui-themes/init.lua",
     },
 
-    -- ici, on dit à LuaRocks que `touchdown.lua` est un script CLI
     install = {
         bin = {
             ["touchdown"] = "touchdown.lua"
